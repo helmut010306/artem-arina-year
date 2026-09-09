@@ -3,167 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#14080e" />
-  <title>Артём ♡ Арина — 1 год</title>
+  <meta name="theme-color" content="#12080d" />
+  <title>Артём ♡ Арина — наш год</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Great+Vibes&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#14080e;--ink:#f7efe8;--muted:#cbb7b0;--gold:#e3c08a;--rose:#c46a78}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Manrope,system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
-    button{font-family:inherit;cursor:pointer}
-    .stars,.petals{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-    .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.55;animation:twinkle 3.4s ease-in-out infinite}
-    @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:.9}}
-    .petal{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px 10px 3px 10px;background:linear-gradient(135deg,#f3c4c8,#c46a78);opacity:.55;animation:fall linear infinite}
-    @keyframes fall{0%{transform:translateY(0) rotate(0);opacity:0}8%{opacity:.6}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
-    #gate{position:fixed;inset:0;z-index:40;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 20%,rgba(196,106,120,.22),transparent 50%),var(--bg);transition:opacity .8s ease,visibility .8s ease}
-    #gate.gone{opacity:0;visibility:hidden;pointer-events:none}
-    .gate-copy{text-align:center;position:relative;z-index:2;padding:24px}
-    .gate-kicker{letter-spacing:.38em;text-transform:uppercase;font-size:11px;color:var(--gold);margin-bottom:28px}
-    .envelope{width:min(78vw,280px);height:180px;margin:0 auto 28px;position:relative;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));animation:float 3.4s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-    .env-body{position:absolute;inset:38px 0 0;background:linear-gradient(180deg,#3a1a24,#2a121a);border:1px solid rgba(227,192,138,.35);border-radius:4px 4px 10px 10px}
-    .env-flap{position:absolute;top:0;left:0;right:0;height:86px;background:linear-gradient(180deg,#4a2230,#32151e);clip-path:polygon(0 0,50% 72%,100% 0)}
-    .wax{position:absolute;left:50%;top:62px;transform:translateX(-50%);width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e37a86,#8d2d3c);display:grid;place-items:center;color:#fff}
-    .open-btn{background:transparent;color:var(--gold);border:1px solid rgba(227,192,138,.45);padding:12px 28px;border-radius:999px;letter-spacing:.18em;text-transform:uppercase;font-size:11px}
-    main{position:relative;z-index:1}
-    .wrap{width:min(720px,92vw);margin:0 auto}
-    .hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:72px 0 48px}
-    .script{font-family:"Great Vibes",cursive;color:var(--gold)}
-    .hero-names{font-family:"Cormorant Garamond",serif;font-size:clamp(42px,12vw,78px);font-weight:600;line-height:.95}
-    .hero-sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(20px,5vw,28px);color:var(--muted);margin-top:14px}
-    .divider{width:84px;height:1px;margin:22px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-    .hero-year{letter-spacing:.42em;text-transform:uppercase;font-size:12px;color:var(--gold)}
-    .counter{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:36px auto 0;width:min(420px,92vw)}
-    .c-cell{background:rgba(255,255,255,.04);border:1px solid rgba(227,192,138,.16);border-radius:14px;padding:14px 4px}
-    .c-num{font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--gold)}
-    .c-lbl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-    section{padding:28px 0 8px}
-    .sec-title{font-family:"Cormorant Garamond",serif;font-size:32px;text-align:center;margin-bottom:8px}
-    .sec-note{text-align:center;color:var(--muted);font-size:14px;margin-bottom:22px}
-    .letter{background:linear-gradient(180deg,#2a161c,#1d0f14);border:1px solid rgba(227,192,138,.22);border-radius:18px;padding:28px 22px}
-    .letter p{font-family:"Cormorant Garamond",serif;font-size:20px;line-height:1.55;color:#f3e6dc;margin-bottom:14px}
-    .letter .sign{font-family:"Great Vibes",cursive;font-size:34px;color:var(--gold);text-align:right}
-    .reasons{display:grid;gap:10px}
-    .reason{background:rgba(255,255,255,.035);border:1px solid rgba(227,192,138,.14);border-radius:16px;padding:16px 16px 16px 18px;display:grid;grid-template-columns:36px 1fr;gap:12px}
-    .reason b{display:block;font-family:"Cormorant Garamond",serif;font-size:20px}
-    .reason span{color:var(--muted);font-size:13px;line-height:1.45}
-    .dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(227,192,138,.12);color:var(--gold);font-size:16px}
-    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .polaroid{background:#f4ebe3;color:#3a2428;padding:10px 10px 28px;border-radius:4px;transform:rotate(var(--r,-2deg));box-shadow:0 10px 24px rgba(0,0,0,.28)}
-    .polaroid:nth-child(even){--r:2.4deg}
-    .slot{aspect-ratio:1;background:linear-gradient(135deg,#d7b6b8,#8d5a63);display:grid;place-items:center;color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;overflow:hidden}
-    .slot img{width:100%;height:100%;object-fit:cover;display:none}
-    .slot.has img{display:block}
-    .slot.has .ph{display:none}
-    .cap{font-family:"Great Vibes",cursive;font-size:22px;text-align:center;margin-top:8px;color:#6b3d45}
-    .timeline{position:relative;padding-left:18px}
-    .timeline:before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
-    .t-item{position:relative;padding:0 0 22px 22px}
-    .t-item:before{content:"";position:absolute;left:-16px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(227,192,138,.16)}
-    .t-when{color:var(--gold);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
-    .t-item h3{font-family:"Cormorant Garamond",serif;font-size:24px;margin:4px 0}
-    .t-item p{color:var(--muted);font-size:14px;line-height:1.5}
-    .finale{text-align:center;padding:48px 0 96px}
-    .finale h2{font-family:"Great Vibes",cursive;font-size:clamp(40px,12vw,64px);color:var(--gold)}
-    .heart-btn{margin-top:22px;border:0;border-radius:999px;padding:14px 26px;color:#2a1218;font-weight:600;background:linear-gradient(180deg,#f0d2a0,#d4a56a)}
-    .music{position:fixed;right:16px;bottom:18px;z-index:30;width:46px;height:46px;border-radius:50%;border:1px solid rgba(227,192,138,.35);background:rgba(20,8,14,.7);color:var(--gold)}
-    .burst{position:fixed;pointer-events:none;z-index:50;font-size:22px;animation:burst 1.1s ease-out forwards}
-    @keyframes burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(.4);opacity:0}}
+    :root { --bg:#12080d; --ink:#f6eee6; --muted:#c9b3ab; --gold:#e4c08b; --line:rgba(228,192,139,.22); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html,body { background:var(--bg); color:var(--ink); }
+    body { font-family:Manrope,system-ui,sans-serif; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+    button { font:inherit; cursor:pointer; }
+    img,video { max-width:100%; display:block; }
+    .stars,.petals { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+    .star { position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; animation:tw 3.2s ease-in-out infinite; }
+    @keyframes tw { 0%,100%{opacity:.15} 50%{opacity:.85} }
+    .petal { position:absolute; top:-16px; width:9px; height:13px; border-radius:2px 10px 3px 10px; background:linear-gradient(135deg,#f3c4c8,#b85a68); opacity:.5; animation:fall linear infinite; }
+    @keyframes fall { 0%{transform:translateY(0) rotate(0);opacity:0} 10%{opacity:.55} 100%{transform:translateY(110vh) rotate(360deg);opacity:0} }
+    #gate { position:fixed; inset:0; z-index:50; display:grid; place-items:center; background:radial-gradient(ellipse at 50% 0%,rgba(180,80,90,.28),transparent 46%),url("assets/almost.jpg") center 30%/cover no-repeat,var(--bg); }
+    #gate:before { content:""; position:absolute; inset:0; background:rgba(12,6,10,.62); }
+    #gate.gone { opacity:0; visibility:hidden; pointer-events:none; transition:opacity .7s ease, visibility .7s; }
+    .gate-box { position:relative; z-index:1; text-align:center; padding:24px; }
+    .kicker { letter-spacing:.34em; text-transform:uppercase; font-size:11px; color:var(--gold); margin-bottom:16px; }
+    .env { width:min(72vw,250px); height:160px; margin:0 auto 22px; position:relative; filter:drop-shadow(0 16px 28px rgba(0,0,0,.45)); animation:float 3.2s ease-in-out infinite; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    .env-body { position:absolute; inset:34px 0 0; background:linear-gradient(180deg,#3a1a24,#241016); border:1px solid var(--line); border-radius:4px 4px 10px 10px; }
+    .env-flap { position:absolute; top:0; left:0; right:0; height:78px; background:linear-gradient(180deg,#4c2230,#2d141c); clip-path:polygon(0 0,50% 72%,100% 0); }
+    .wax { position:absolute; left:50%; top:56px; transform:translateX(-50%); width:40px; height:40px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#e37a86,#7d2432); display:grid; place-items:center; }
+    .script { font-family:"Great Vibes",cursive; color:var(--gold); }
+    .open-btn { margin-top:18px; background:transparent; color:var(--gold); border:1px solid rgba(228,192,139,.45); padding:12px 26px; border-radius:999px; letter-spacing:.16em; text-transform:uppercase; font-size:11px; }
+    main { position:relative; z-index:1; }
+    .wrap { width:min(740px,92vw); margin:0 auto; }
+    .hero { min-height:100svh; display:grid; place-items:end center; text-align:center; position:relative; padding:0 0 36px; }
+    .hero-bg { position:absolute; inset:0; background:url("assets/kiss.jpg") center 20%/cover no-repeat; }
+    .hero-bg:after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(18,8,13,.25),rgba(18,8,13,.2) 40%,rgba(18,8,13,.92) 78%,var(--bg)); }
+    .hero-in { position:relative; z-index:1; padding-top:46vh; }
+    .names { font-family:"Cormorant Garamond",serif; font-size:clamp(44px,12vw,80px); line-height:.92; font-weight:600; }
+    .sub { font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(20px,5vw,28px); color:var(--muted); margin-top:10px; }
+    .divider { width:84px; height:1px; margin:16px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+    .counter { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:24px auto 0; width:min(430px,92vw); }
+    .c-cell { background:rgba(18,8,13,.45); border:1px solid var(--line); border-radius:14px; padding:12px 4px; backdrop-filter:blur(8px); }
+    .c-num { font-family:"Cormorant Garamond",serif; font-size:28px; color:var(--gold); }
+    .c-lbl { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+    section { padding:34px 0 6px; }
+    .sec-title { font-family:"Cormorant Garamond",serif; font-size:32px; text-align:center; }
+    .sec-note { text-align:center; color:var(--muted); font-size:14px; margin:6px 0 20px; }
+    .dates { display:grid; gap:10px; }
+    .date-card { border:1px solid var(--line); border-radius:18px; padding:16px 16px 14px; background:rgba(255,255,255,.03); }
+    .date-card small { color:var(--gold); letter-spacing:.16em; text-transform:uppercase; font-size:11px; }
+    .date-card h3 { font-family:"Cormorant Garamond",serif; font-size:24px; margin:4px 0 6px; }
+    .date-card p { color:var(--muted); font-size:14px; line-height:1.5; }
+    .shot { border-radius:16px; overflow:hidden; border:1px solid var(--line); margin-top:14px; }
+    .shot img { width:100%; }
+    .letter { background:linear-gradient(180deg,#2a161c,#1a0d12); border:1px solid var(--line); border-radius:18px; padding:26px 20px; }
+    .letter p { font-family:"Cormorant Garamond",serif; font-size:20px; line-height:1.55; color:#f3e6dc; margin-bottom:13px; }
+    .sign { font-family:"Great Vibes",cursive; font-size:34px; color:var(--gold); text-align:right; }
+    .gallery { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .polaroid { background:#f3ebe3; color:#3a2428; padding:8px 8px 22px; border-radius:3px; box-shadow:0 10px 24px rgba(0,0,0,.28); transform:rotate(var(--r,-1.6deg)); }
+    .polaroid:nth-child(even){ --r:2deg; }
+    .polaroid img { width:100%; aspect-ratio:3/4; object-fit:cover; }
+    .polaroid.wide { grid-column:1/-1; }
+    .polaroid.wide img { aspect-ratio:16/9; }
+    .cap { font-family:"Great Vibes",cursive; font-size:22px; text-align:center; margin-top:8px; color:#6b3d45; }
+    .clips { display:grid; gap:16px; }
+    .clip { border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#1a0d12; }
+    .clip video { width:100%; max-height:420px; background:#000; }
+    .clip p { padding:12px 14px 14px; color:var(--muted); font-size:13px; }
+    .finale { text-align:center; padding:48px 0 110px; }
+    .finale h2 { font-family:"Great Vibes",cursive; font-size:clamp(40px,12vw,66px); color:var(--gold); }
+    .heart-btn { margin-top:20px; border:0; border-radius:999px; padding:14px 26px; color:#2a1218; font-weight:600; background:linear-gradient(180deg,#f0d2a0,#d4a56a); }
+    .music { position:fixed; right:16px; bottom:18px; z-index:30; width:46px; height:46px; border-radius:50%; border:1px solid rgba(228,192,139,.35); background:rgba(18,8,13,.72); color:var(--gold); }
+    .burst { position:fixed; pointer-events:none; z-index:60; font-size:22px; animation:burst 1.1s ease-out forwards; }
+    @keyframes burst { to { transform:translate(var(--x),var(--y)) scale(.35); opacity:0; } }
   </style>
 </head>
 <body>
   <div class="stars" id="stars"></div>
   <div class="petals" id="petals"></div>
   <div id="gate">
-    <div class="gate-copy">
-      <p class="gate-kicker">только для тебя</p>
-      <div class="envelope"><div class="env-body"></div><div class="env-flap"></div><div class="wax">♡</div></div>
-      <p class="script" style="font-size:34px;margin-bottom:8px">Для Арины</p>
-      <p style="color:var(--muted);margin-bottom:22px">от Артёма · первый год</p>
+    <div class="gate-box">
+      <p class="kicker">только для тебя</p>
+      <div class="env"><div class="env-body"></div><div class="env-flap"></div><div class="wax">♡</div></div>
+      <p class="script" style="font-size:36px">Для Арины</p>
+      <p style="color:var(--muted);margin-top:6px">от Артёма · наш первый год</p>
       <button class="open-btn" id="open">открыть письмо</button>
     </div>
   </div>
   <main>
-    <section class="hero wrap"><div>
-      <p class="hero-year">09 · первый год</p>
-      <div class="divider"></div>
-      <h1 class="hero-names">Артём<br>&<br>Арина</h1>
-      <p class="hero-sub">целый год, как будто мало</p>
-      <div class="counter" id="counter"></div>
-    </div></section>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-in wrap">
+        <p class="kicker">13 октября 2025 — ∞</p>
+        <div class="divider"></div>
+        <h1 class="names">Артём<br>&amp;<br>Арина</h1>
+        <p class="sub">год, который начался с «привет, коллега»</p>
+        <div class="counter" id="counter"></div>
+      </div>
+    </section>
+    <section class="wrap">
+      <h2 class="sec-title">Две даты</h2>
+      <p class="sec-note">сначала ты добавила. потом мы выбрали друг друга.</p>
+      <div class="dates">
+        <article class="date-card">
+          <small>20 сентября 2025</small>
+          <h3>Первое сообщение</h3>
+          <p>Ты нашла меня во «ВКонтакте». Я написал: «Привет, коллега) Чем могу быть обязан?» — и опоздал к восьми. Хорошо, что ты всё равно ответила.</p>
+        </article>
+        <article class="date-card">
+          <small>13 октября 2025</small>
+          <h3>Мы начали встречаться</h3>
+          <p>С этой ночи считаются наши дни. Не идеальные — наши. С работой, сном, чаем, ночным теннисом и руками, которые знают дорогу.</p>
+        </article>
+      </div>
+      <figure class="shot"><img src="assets/first.jpg" alt="Первая переписка 20 сентября 2025" /></figure>
+    </section>
     <section class="wrap">
       <h2 class="sec-title">Письмо тебе</h2>
       <p class="sec-note">читай медленно</p>
       <article class="letter">
         <p>Арина.</p>
-        <p>Год назад рядом с тобой стало тихо и правильно. Не эффектно — по-настоящему. С тех пор дни складываются в нас.</p>
-        <p>Я люблю, как ты смеёшься. Как смотришь, когда думаешь, что я не вижу. Как делаешь обычный вечер важным.</p>
-        <p>Спасибо, что выбрала меня. Ещё раз. И ещё. Этот год — только первая глава.</p>
+        <p>Год назад тебя ещё не было в моих днях. Потом появилось одно добавление в друзья — и жизнь сдвинулась на миллиметр. Этого хватило.</p>
+        <p>Я люблю, как ты смеёшься на селфи, как замираешь на снегу, как держишь карты зелёными ногтями, пока заваривается чай. Люблю, как ты прижимаешься вечером на улице, будто городу не обязательно об этом знать.</p>
+        <p>Спасибо, что не прошла мимо коллеги. Спасибо, что 13 октября сказала этому «да». Этот год — только первая глава.</p>
         <p class="sign">твой Артём</p>
       </article>
     </section>
     <section class="wrap">
-      <h2 class="sec-title">Почему ты</h2>
-      <div class="reasons">
-        <div class="reason"><div class="dot">01</div><div><b>Твой взгляд</b><span>В нём сразу понятно, что дом — это не стены.</span></div></div>
-        <div class="reason"><div class="dot">02</div><div><b>Твой смех</b><span>Самый короткий путь из плохого дня в хороший.</span></div></div>
-        <div class="reason"><div class="dot">03</div><div><b>Твоя нежность</b><span>Тихая, точная, такая, что хочется беречь.</span></div></div>
-        <div class="reason"><div class="dot">04</div><div><b>Ты рядом</b><span>Не когда удобно. А когда нужно.</span></div></div>
-        <div class="reason"><div class="dot">05</div><div><b>Мы</b><span>Двое разных людей, которые стали одной историей.</span></div></div>
-      </div>
-    </section>
-    <section class="wrap">
-      <h2 class="sec-title">Наши кадры</h2>
-      <p class="sec-note">сюда встанут ваши фото</p>
+      <h2 class="sec-title">Мы</h2>
+      <p class="sec-note">кадры, которые хочется оставить</p>
       <div class="gallery">
-        <figure class="polaroid"><div class="slot" data-slot="1"><span class="ph">фото 1</span><img alt="" /></div><figcaption class="cap">начало</figcaption></figure>
-        <figure class="polaroid"><div class="slot" data-slot="2"><span class="ph">фото 2</span><img alt="" /></div><figcaption class="cap">мы</figcaption></figure>
-        <figure class="polaroid"><div class="slot" data-slot="3"><span class="ph">фото 3</span><img alt="" /></div><figcaption class="cap">смех</figcaption></figure>
-        <figure class="polaroid"><div class="slot" data-slot="4"><span class="ph">фото 4</span><img alt="" /></div><figcaption class="cap">сейчас</figcaption></figure>
+        <figure class="polaroid"><img src="assets/selfie.jpg" alt="" /><figcaption class="cap">рядом</figcaption></figure>
+        <figure class="polaroid"><img src="assets/almost.jpg" alt="" /><figcaption class="cap">тихо</figcaption></figure>
+        <figure class="polaroid"><img src="assets/dance.jpg" alt="" /><figcaption class="cap">в танце</figcaption></figure>
+        <figure class="polaroid"><img src="assets/snow.jpg" alt="" /><figcaption class="cap">зима</figcaption></figure>
+        <figure class="polaroid wide"><img src="assets/tea.jpg" alt="" /><figcaption class="cap">чай и карты</figcaption></figure>
+        <figure class="polaroid"><img src="assets/night.jpg" alt="" /><figcaption class="cap">город</figcaption></figure>
+        <figure class="polaroid"><img src="assets/kiss.jpg" alt="" /><figcaption class="cap">мы</figcaption></figure>
+        <figure class="polaroid"><img src="assets/forehead.jpg" alt="" /><figcaption class="cap">бережно</figcaption></figure>
+        <figure class="polaroid"><img src="assets/sunset.jpg" alt="" /><figcaption class="cap">вечер</figcaption></figure>
       </div>
     </section>
     <section class="wrap">
-      <h2 class="sec-title">Этот год</h2>
-      <div class="timeline">
-        <div class="t-item"><div class="t-when">глава I</div><h3>Как всё началось</h3><p>Один взгляд, одно «привет» — и мир чуть сдвинулся.</p></div>
-        <div class="t-item"><div class="t-when">глава II</div><h3>Мы научились быть своими</h3><p>Не идеальными. Живыми. С плохими днями и руками, которые всегда находят друг друга.</p></div>
-        <div class="t-item"><div class="t-when">глава III</div><h3>И вот нам год</h3><p>Не финал. Отметка. Точка, после которой хочется ещё тысячу таких же вечеров.</p></div>
+      <h2 class="sec-title">Два движения</h2>
+      <p class="sec-note">можно включить звук</p>
+      <div class="clips">
+        <div class="clip">
+          <video controls playsinline preload="metadata" poster="assets/sunset.jpg" src="assets/tennis.mp4"></video>
+          <p>Ночной теннис. Двое на площадке, фонарь и город, который нам не мешает.</p>
+        </div>
+        <div class="clip">
+          <video controls playsinline preload="metadata" src="assets/birthday.mp4"></video>
+          <p>Твой день рождения. Шары, смех и попытка уместить всю нежность в одну комнату.</p>
+        </div>
       </div>
     </section>
     <section class="finale wrap">
-      <p class="hero-year">и дальше</p>
+      <p class="kicker">и дальше</p>
       <div class="divider"></div>
       <h2>Я выбираю тебя</h2>
-      <p style="color:var(--muted);margin-top:10px;max-width:28ch;margin-left:auto;margin-right:auto">ещё на год. и на следующий. и на тот, который мы ещё даже не умеем представить.</p>
+      <p style="color:var(--muted);margin:12px auto 0;max-width:28ch">ещё на год. и на следующий. и на тот, который мы ещё не умеем представить.</p>
       <button class="heart-btn" id="hearts">отправь мне сердце ♡</button>
     </section>
   </main>
-  <button class="music" id="music" type="button">♪</button>
+  <button class="music" id="music" type="button" aria-label="Музыка">♪</button>
   <script>
-    const START = new Date("2025-09-10T00:00:00");
-    try { const tg = window.Telegram && window.Telegram.WebApp; if (tg) { tg.ready(); tg.expand(); tg.setHeaderColor("#14080e"); tg.setBackgroundColor("#14080e"); } } catch (e) {}
+    const START = new Date("2025-10-13T00:00:00");
+    try { const tg = window.Telegram && window.Telegram.WebApp; if (tg) { tg.ready(); tg.expand(); tg.setHeaderColor("#12080d"); tg.setBackgroundColor("#12080d"); } } catch(e) {}
     const stars = document.getElementById("stars");
-    for (let i = 0; i < 70; i++) { const s = document.createElement("i"); s.className = "star"; s.style.left = Math.random()*100+"%"; s.style.top = Math.random()*100+"%"; s.style.animationDelay = Math.random()*3+"s"; stars.appendChild(s); }
+    for (let i=0;i<64;i++){ const s=document.createElement("i"); s.className="star"; s.style.left=Math.random()*100+"%"; s.style.top=Math.random()*100+"%"; s.style.animationDelay=Math.random()*3+"s"; stars.appendChild(s); }
     const petals = document.getElementById("petals");
-    for (let i = 0; i < 16; i++) { const p = document.createElement("i"); p.className = "petal"; p.style.left = Math.random()*100+"%"; p.style.animationDuration = (8+Math.random()*10)+"s"; p.style.animationDelay = Math.random()*8+"s"; petals.appendChild(p); }
-    document.getElementById("open").addEventListener("click", () => { document.getElementById("gate").classList.add("gone"); spawnBurst(innerWidth/2, innerHeight/2, 18); });
-    function tick(){ const now=new Date(); let start=START; if(now<start) start=new Date(now.getFullYear()-1, now.getMonth(), now.getDate()); const ms=now-start; const days=Math.floor(ms/86400000), hours=Math.floor((ms%86400000)/3600000), mins=Math.floor((ms%3600000)/60000), secs=Math.floor((ms%60000)/1000); document.getElementById("counter").innerHTML=[[days,"дней"],[hours,"часов"],[mins,"минут"],[secs,"секунд"]].map(([n,l])=>`<div class="c-cell"><div class="c-num">${n}</div><div class="c-lbl">${l}</div></div>`).join(""); }
+    for (let i=0;i<14;i++){ const p=document.createElement("i"); p.className="petal"; p.style.left=Math.random()*100+"%"; p.style.animationDuration=(8+Math.random()*10)+"s"; p.style.animationDelay=Math.random()*8+"s"; petals.appendChild(p); }
+    document.getElementById("open").onclick = () => { document.getElementById("gate").classList.add("gone"); burst(innerWidth/2, innerHeight/2, 16); };
+    function tick(){ const ms=Date.now()-START.getTime(); const days=Math.max(0,Math.floor(ms/86400000)); const hours=Math.floor((ms%86400000)/3600000); const mins=Math.floor((ms%3600000)/60000); const secs=Math.floor((ms%60000)/1000); document.getElementById("counter").innerHTML=[[days,"дней"],[hours,"часов"],[mins,"минут"],[secs,"секунд"]].map(([n,l])=>`<div class="c-cell"><div class="c-num">${n}</div><div class="c-lbl">${l}</div></div>`).join(""); }
     tick(); setInterval(tick,1000);
-    function spawnBurst(x,y,n){ const g=["\u2661","\u2665","\u2726","\u2740"]; for(let i=0;i<n;i++){ const el=document.createElement("div"); el.className="burst"; el.textContent=g[i%g.length]; el.style.left=x+"px"; el.style.top=y+"px"; const ang=Math.random()*Math.PI*2, dist=40+Math.random()*140; el.style.setProperty("--x",Math.cos(ang)*dist+"px"); el.style.setProperty("--y",Math.sin(ang)*dist+"px"); document.body.appendChild(el); setTimeout(()=>el.remove(),1100);} }
-    document.getElementById("hearts").addEventListener("click",e=>{ const r=e.currentTarget.getBoundingClientRect(); spawnBurst(r.left+r.width/2,r.top,22); });
-    const audioCtx={ctx:null,playing:false,nodes:[]};
-    document.getElementById("music").addEventListener("click",async()=>{
-      if(!audioCtx.ctx) audioCtx.ctx=new (window.AudioContext||window.webkitAudioContext)();
-      const ctx=audioCtx.ctx;
-      if(audioCtx.playing){ audioCtx.nodes.forEach(n=>{try{n.stop()}catch(e){}}); audioCtx.nodes=[]; audioCtx.playing=false; document.getElementById("music").textContent="\u266A"; return; }
-      audioCtx.playing=true; document.getElementById("music").textContent="\u266B";
+    function burst(x,y,n){ const g=["♡","♥","✦","❀"]; for(let i=0;i<n;i++){ const el=document.createElement("div"); el.className="burst"; el.textContent=g[i%g.length]; el.style.left=x+"px"; el.style.top=y+"px"; const a=Math.random()*Math.PI*2,d=40+Math.random()*140; el.style.setProperty("--x",Math.cos(a)*d+"px"); el.style.setProperty("--y",Math.sin(a)*d+"px"); document.body.appendChild(el); setTimeout(()=>el.remove(),1100);} }
+    document.getElementById("hearts").onclick = e => { const r=e.currentTarget.getBoundingClientRect(); burst(r.left+r.width/2,r.top,22); };
+    const A={ctx:null,playing:false,nodes:[]};
+    document.getElementById("music").onclick = async () => {
+      if(!A.ctx) A.ctx=new (window.AudioContext||window.webkitAudioContext)();
+      if(A.playing){ A.nodes.forEach(n=>{try{n.stop()}catch(e){}}); A.nodes=[]; A.playing=false; document.getElementById("music").textContent="♪"; return; }
+      A.playing=true; document.getElementById("music").textContent="♫";
       const notes=[261.63,329.63,392,523.25,392,329.63];
-      const play=t0=>notes.forEach((f,i)=>{ const o=ctx.createOscillator(), g=ctx.createGain(); o.type="sine"; o.frequency.value=f; g.gain.setValueAtTime(0,t0+i*.55); g.gain.linearRampToValueAtTime(.035,t0+i*.55+.08); g.gain.exponentialRampToValueAtTime(.0001,t0+i*.55+.7); o.connect(g); g.connect(ctx.destination); o.start(t0+i*.55); o.stop(t0+i*.55+.75); audioCtx.nodes.push(o); });
-      const loop=()=>{ if(!audioCtx.playing) return; play(ctx.currentTime); setTimeout(loop,3600); }; loop();
-    });
+      const play=t0=>notes.forEach((f,i)=>{ const o=A.ctx.createOscillator(),g=A.ctx.createGain(); o.type="sine"; o.frequency.value=f; g.gain.setValueAtTime(0,t0+i*.55); g.gain.linearRampToValueAtTime(.03,t0+i*.55+.08); g.gain.exponentialRampToValueAtTime(.0001,t0+i*.55+.7); o.connect(g); g.connect(A.ctx.destination); o.start(t0+i*.55); o.stop(t0+i*.55+.75); A.nodes.push(o); });
+      const loop=()=>{ if(!A.playing) return; play(A.ctx.currentTime); setTimeout(loop,3600); }; loop();
+    };
   </script>
 </body>
 </html>
