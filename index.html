@@ -169,12 +169,12 @@
   <button class="music" id="music" type="button" aria-label="Музыка">♪</button>
   <script>
     const START = new Date("2025-10-13T00:00:00");
-    try { const tg = window.Telegram && window.Telegram.WebApp; if (tg) { tg.ready(); tg.expand(); tg.setHeaderColor("#12080d"); tg.setBackgroundColor("#12080d"); } } catch(e) {}
+    try { const tg = window.Telegram && window.Telegram.WebApp; if (tg) { tg.ready(); tg.expand(); tg.setHeaderColor("#12080d"); tg.setBackgroundColor("#12080d"); if (tg.disableVerticalSwipes) tg.disableVerticalSwipes(); } } catch(e) {}
     const stars = document.getElementById("stars");
     for (let i=0;i<64;i++){ const s=document.createElement("i"); s.className="star"; s.style.left=Math.random()*100+"%"; s.style.top=Math.random()*100+"%"; s.style.animationDelay=Math.random()*3+"s"; stars.appendChild(s); }
     const petals = document.getElementById("petals");
     for (let i=0;i<14;i++){ const p=document.createElement("i"); p.className="petal"; p.style.left=Math.random()*100+"%"; p.style.animationDuration=(8+Math.random()*10)+"s"; p.style.animationDelay=Math.random()*8+"s"; petals.appendChild(p); }
-    document.getElementById("open").onclick = () => { document.getElementById("gate").classList.add("gone"); burst(innerWidth/2, innerHeight/2, 16); };
+    document.getElementById("open").onclick = () => { document.getElementById("gate").classList.add("gone"); burst(innerWidth/2, innerHeight/2, 16); try { window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.HapticFeedback && window.Telegram.WebApp.HapticFeedback.impactOccurred("light"); } catch(e) {} };
     function tick(){ const ms=Date.now()-START.getTime(); const days=Math.max(0,Math.floor(ms/86400000)); const hours=Math.floor((ms%86400000)/3600000); const mins=Math.floor((ms%3600000)/60000); const secs=Math.floor((ms%60000)/1000); document.getElementById("counter").innerHTML=[[days,"дней"],[hours,"часов"],[mins,"минут"],[secs,"секунд"]].map(([n,l])=>`<div class="c-cell"><div class="c-num">${n}</div><div class="c-lbl">${l}</div></div>`).join(""); }
     tick(); setInterval(tick,1000);
     function burst(x,y,n){ const g=["♡","♥","✦","❀"]; for(let i=0;i<n;i++){ const el=document.createElement("div"); el.className="burst"; el.textContent=g[i%g.length]; el.style.left=x+"px"; el.style.top=y+"px"; const a=Math.random()*Math.PI*2,d=40+Math.random()*140; el.style.setProperty("--x",Math.cos(a)*d+"px"); el.style.setProperty("--y",Math.sin(a)*d+"px"); document.body.appendChild(el); setTimeout(()=>el.remove(),1100);} }

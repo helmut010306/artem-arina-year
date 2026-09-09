@@ -1,2 +1,26 @@
-# artem-arina-year
-Romantic 1-year anniversary page for Arina from Artem
+# Артём ♡ Арина — наш год
+
+Романтичное письмо-приложение к первой годовщине. Telegram Mini App.
+
+## Открыть
+
+- Прямая ссылка: https://artem-arina-year.netlify.app
+- Код: этот репозиторий
+
+## Подключить к Telegram (только вставить ссылку)
+
+1. Открой [@BotFather](https://t.me/BotFather)
+2. Если бота ещё нет: `/newbot` — имя например `Артём и Арина`, username любой свободный
+3. `/newapp` — выбери этого бота
+4. Title: `Для Арины`
+5. Description: `Письмо от Артёма. Наш первый год.`
+6. Photo: любое фото 640×360 (можно селфи)
+7. GIF: `/empty`
+8. URL:
+   `https://artem-arina-year.netlify.app`
+9. Short name: `year` (или любое, латиницей)
+10. `/setmenubutton` — тот же URL, текст `открыть письмо`
+
+Ссылка для Арины: `https://t.me/<bot_username>/year`
+
+Готово: она открывает бота, нажимает кнопку — письмо открывается как мини-приложение, без установки.
